@@ -21,8 +21,8 @@ jobs:
           with:
             application_id: ${{ vars.GH_APP_ID }}
             application_private_key: ${{ secrets.GH_APP_KEY }}
-            organization: ${{ ORGANIZATION }}
+            organization: ${{ env.ORGANIZATION }}
         - name: List Issues
           env:
             GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          run: gh project item-list ${{ PROJECT_ID }} --limit ${{ FETCH_COUNT }} --owner ${{ ORGANIZATION }}
+          run: gh project item-list ${{ env.PROJECT_ID }} --limit ${{ env.FETCH_COUNT }} --owner ${{ env.ORGANIZATION }}
