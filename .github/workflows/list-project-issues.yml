@@ -5,13 +5,14 @@ on:
      - cron: '0 4 * * *' 
   workflow_dispatch:
      
+env:
+  ORGANIZATION: xpirit-training
+  PROJECT_ID: 3
+  FETCH_COUNT: 50
+ 
 jobs:
   list-issues:
     runs-on: ubuntu-latest
-    env:
-      ORGANIZATION: xpirit-training
-      PROJECT_ID: 2
-      FETCH_COUNT: 50
     steps:
         - name: Checkout Repository
           uses: actions/checkout@v3
