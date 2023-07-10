@@ -1,0 +1,28 @@
+name: List Project Issues
+
+on:
+  schedule:
+     - cron: '0 4 * * *' 
+  workflow_dispatch:
+     
+jobs:
+  list-issues:
+    runs-on: ubuntu-latest
+    env:
+      ORGANIZATION: xpirit-training
+      PROJECT_ID: 2
+      FETCH_COUNT: 50
+    steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v3
+        - name: Get Token
+          id: get_workflow_token
+          uses: peter-murray/workflow-application-token-action@v2
+          with:
+            application_id: ${{ vars.GH_APP_ID }}
+            application_private_key: ${{ secrets.GH_APP_KEY }}
+            organization: ${{ ORGANIZATION }}
+        - name: List Issues
+          env:
+            GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          run: gh project item-list ${{ PROJECT_ID }} --limit ${{ FETCH_COUNT }} --owner ${{ ORGANIZATION }}
