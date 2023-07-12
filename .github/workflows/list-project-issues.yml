@@ -15,6 +15,6 @@ jobs:
             application_private_key: ${{ secrets.GH_APP_KEY }}
             organization: ${{ vars.ORGANIZATION }}
         - name: List Issues
+          run: gh project item-list ${{ vars.PROJECT_ID }} --limit ${{ vars.FETCH_COUNT }} --owner ${{ vars.ORGANIZATION }}
           env:
             GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          run: gh project item-list ${{ vars.PROJECT_ID }} --limit ${{ vars.FETCH_COUNT }} --owner ${{ vars.ORGANIZATION }}
