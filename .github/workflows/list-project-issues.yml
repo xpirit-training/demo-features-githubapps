@@ -11,7 +11,8 @@ env:
   FETCH_COUNT: 50
  
 jobs:
-  list-issues:
+  list-project-issues:
+    name: List Project Issues
     runs-on: ubuntu-latest
     steps:
         - name: Checkout Repository
