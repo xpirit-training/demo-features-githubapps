@@ -4,11 +4,6 @@ on:
   schedule:
      - cron: '0 4 * * *' 
   workflow_dispatch:
-     
-env:
-  ORGANIZATION: xpirit-training
-  PROJECT_ID: 3
-  FETCH_COUNT: 50
  
 jobs:
   list-project-issues:
@@ -23,8 +18,8 @@ jobs:
           with:
             application_id: ${{ vars.GH_APP_ID }}
             application_private_key: ${{ secrets.GH_APP_KEY }}
-            organization: ${{ env.ORGANIZATION }}
+            organization: ${{ vars.ORGANIZATION }}
         - name: List Issues
           env:
             GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
-          run: gh project item-list ${{ env.PROJECT_ID }} --limit ${{ env.FETCH_COUNT }} --owner ${{ env.ORGANIZATION }}
+          run: gh project item-list ${{ vars.PROJECT_ID }} --limit ${{ vars.FETCH_COUNT }} --owner ${{ vars.ORGANIZATION }}
