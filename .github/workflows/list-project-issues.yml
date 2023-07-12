@@ -1,9 +1,6 @@
 name: List Project Issues
 
-on:
-  schedule:
-     - cron: '0 4 * * *' 
-  workflow_dispatch:
+on: [ workflow_dispatch ]
  
 jobs:
   list-project-issues:
