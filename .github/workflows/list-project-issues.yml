@@ -13,7 +13,6 @@ jobs:
           with:
             app-id: ${{ vars.GH_APP_ID }}
             private-key: ${{ secrets.GH_APP_KEY }}
-            github-api-url: "https://github.acme-inc.com/api/v3"
         - name: List Issues
           run: gh project item-list ${{ vars.PROJECT_ID }} --limit ${{ vars.FETCH_COUNT }} --owner ${{ vars.ORGANIZATION }}
           env:
