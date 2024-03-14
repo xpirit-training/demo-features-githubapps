@@ -7,6 +7,7 @@ jobs:
     name: List Project Issues
     runs-on: ubuntu-latest
     steps:
+        - uses: actions/checkout@v4
         - name: Get Token
           id: get_workflow_token
           uses: actions/create-github-app-token@v1
