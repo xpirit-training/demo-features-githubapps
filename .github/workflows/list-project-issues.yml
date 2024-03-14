@@ -18,3 +18,7 @@ jobs:
           run: gh issue list
           env:
             GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+        - name: Create Issues
+          run: gh issue create -t "From Workflow" -b "Created using GH Actions with GitHub App"
+          env:
+            GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
