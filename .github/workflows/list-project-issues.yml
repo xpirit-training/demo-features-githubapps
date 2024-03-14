@@ -9,11 +9,11 @@ jobs:
     steps:
         - name: Get Token
           id: get_workflow_token
-          uses: peter-murray/workflow-application-token-action@v2
+          uses: actions/create-github-app-token@v1
           with:
-            application_id: ${{ vars.GH_APP_ID }}
-            application_private_key: ${{ secrets.GH_APP_KEY }}
-            organization: ${{ vars.ORGANIZATION }}
+            app-id: ${{ vars.GH_APP_ID }}
+            private-key: ${{ secrets.GH_APP_KEY }}
+            github-api-url: "https://github.acme-inc.com/api/v3"
         - name: List Issues
           run: gh project item-list ${{ vars.PROJECT_ID }} --limit ${{ vars.FETCH_COUNT }} --owner ${{ vars.ORGANIZATION }}
           env:
